@@ -1,0 +1,17 @@
+def max_chsl(n):
+  q = []
+  for i in range(len(list(range(int((n + 1)/ 2) + 1)))):
+    if i ** 2 <= n:
+      q.append(i)
+  return max(q)
+
+def sqwer(n, n1 = 100000):
+  a = [max_chsl(n)] + ([0] * n1)
+  for i in range(len(a) - 1):
+    a[i + 1] = (a[i] + (n / a[i])) / 2
+
+  for i in range(len(a) - 1):
+    if a[i] == a[i + 1]:
+      a[i + 1] = 0
+
+  return a[:a.index(0)][-1]
